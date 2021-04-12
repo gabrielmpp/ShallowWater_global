@@ -154,7 +154,7 @@ dx = 6371000 * np.cos(np.max(lats)*np.pi/180) * (lats[1] - lats[0])
 c = np.sqrt(g*H)  # speed of gravity waves
 dt_max = .1*dx/(np.sqrt(2)*c)
 # dt = 50  # Time interval in seconds. Must be smaller than dt_max
-times_in_seconds = np.arange(0, integration_length * 86400, dt)
+times_in_seconds = np.arange(0, integration_length * 86400, dt_max)
 da_h = xr.DataArray(10*gaussian_initial_condition(lons.shape[0], lats.shape[0], sigma=.3, mu=0), dims=('latitude', 'longitude'),
                     coords={'longitude': lons, 'latitude': lats})
 da_u = xr.zeros_like(da_h)
